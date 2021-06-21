@@ -41,12 +41,24 @@ function shuffle(deck) {
   }
 }
 
-function determineWinner(playerOneCard, playerTwoCard) {
-  if (playerOneCard > playerTwoCard) {
+function drawCards(deck) {
+  return deck.shift();
+}
+
+function determineWinner(deck) {
+  const playerOneCard = drawCards(deck);
+  const playerTwoCard = drawCards(deck);
+
+  if (playerOneCard.value > playerTwoCard.value) {
     return 'Player 1 wins this round';
-  } else if (playerOneCard < playerTwoCard) {
+  } else if (playerOneCard.value < playerTwoCard.value) {
     return 'Player 2 wins this round';
   } else {
     return 'Tie';
   }
+}
+
+function newGame() {
+  const newDeck = getDeck();
+  shuffle(newDeck);
 }
