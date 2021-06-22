@@ -15,14 +15,20 @@ const values = [
   'K',
 ];
 
+const initialValues = {
+  roundCounter: 0,
+  scoreP1: 0,
+  scoreP2: 0,
+  cardP1: '',
+  cardP2: '',
+  roundWinner: '',
+};
+
+// deep copy of the initialValues object. These values will change thruout game
+let currentGameValues = JSON.parse(JSON.stringify(initialValues));
+
 let deck = getDeck();
 deck = shuffle(deck);
-let roundCounter = 0;
-let scoreP1 = 0;
-let scoreP2 = 0;
-let cardP1 = '';
-let cardP2 = '';
-let roundWinner = '';
 
 let newGameButton = document.getElementById('newGameButton');
 let drawCardsButton = document.getElementById('drawCardsButton');
@@ -60,17 +66,17 @@ function shuffle(deck) {
 
 function drawCards() {
   // draw 2 card objects
-  cardP1 = deck.shift();
-  cardP2 = deck.shift();
-  determineWinner(cardP1, cardP2);
-  cardP1 = `${cardP1.value} of ${cardP1.suit}`;
-  cardP2 = `${cardP2.value} of ${cardP2.suit}`;
+  currentGameValues.cardP1 = deck.shift();
+  currentGameValues.cardP2 = deck.shift();
+  determineWinner(currentGameValues.cardP1, currentGameValues.cardP2);
+  currentGameValues.cardP1 = `${currentGameValues.cardP1.value} of ${currentGameValues.cardP1.suit}`;
+  currentGameValues.cardP2 = `${currentGameValues.cardP2.value} of ${currentGameValues.cardP2.suit}`;
   increaseRound();
   updateValues();
-  if (roundCounter === 26) {
+  if (currentGameValues.roundCounter === 26) {
     drawCardsButton.disabled = true;
     setTimeout(() => {
-      announceGameWinner(scoreP1, scoreP2);
+      announceGameWinner(currentGameValues.scoreP1, currentGameValues.scoreP2);
     }, 1000);
   }
 }
@@ -88,21 +94,21 @@ function determineWinner(cardP1, cardP2) {
   }
 
   if (playerOneCardValue > playerTwoCardValue) {
-    roundWinner = 'Player 1 wins this round';
-    scoreP1++;
+    currentGameValues.roundWinner = 'Player 1 wins this round';
+    currentGameValues.scoreP1++;
   } else if (playerOneCardValue < playerTwoCardValue) {
-    roundWinner = 'Player 2 wins this round';
-    scoreP2++;
+    currentGameValues.roundWinner = 'Player 2 wins this round';
+    currentGameValues.scoreP2++;
   } else {
-    roundWinner = 'Tie';
+    currentGameValues.roundWinner = 'Tie';
   }
-  return roundWinner;
+  return currentGameValues.roundWinner;
 }
 
-function announceGameWinner(scoreP1, scoreP2) {
-  if (scoreP1 > scoreP2) {
+function announceGameWinner(currentGameValues) {
+  if (currentGameValues.scoreP1 > currentGameValues.scoreP2) {
     window.alert('Congrats, Player 1. You Win!');
-  } else if (scoreP1 < scoreP2) {
+  } else if (currentGameValues.scoreP1 < currentGameValues.scoreP2) {
     window.alert('Congrats, Player 2. You Win!');
   } else {
     window.alert('Tie Game! Play again to determine a winner.');
@@ -110,7 +116,7 @@ function announceGameWinner(scoreP1, scoreP2) {
 }
 
 function increaseRound() {
-  roundCounter++;
+  currentGameValues.roundCounter++;
 }
 
 function convertFaceCards(card) {
@@ -131,21 +137,23 @@ function convertFaceCards(card) {
 function newGame() {
   deck = shuffle(getDeck());
   window.alert('Shuffling Deck...');
-  roundCounter = 0;
-  scoreP1 = 0;
-  scoreP2 = 0;
-  cardP1 = '';
-  cardP2 = '';
-  roundWinner = '';
+  currentGameValues = Object.assign({}, initialValues);
+
   updateValues();
 }
 
 function updateValues() {
-  document.getElementById('roundCounter').innerText = 'Round: ' + roundCounter;
-  document.getElementById('scoreP1').innerText = 'Player 1 Score: ' + scoreP1;
-  document.getElementById('scoreP2').innerText = 'Player 2 Score: ' + scoreP2;
-  document.getElementById('cardP1').innerText = 'Player 1 Card: ' + cardP1;
-  document.getElementById('cardP2').innerText = 'Player 2 Card: ' + cardP2;
-  document.getElementById('roundWinner').innerText = 'Winner: ' + roundWinner;
+  document.getElementById('roundCounter').innerText =
+    'Round: ' + currentGameValues.roundCounter;
+  document.getElementById('scoreP1').innerText =
+    'Player 1 Score: ' + currentGameValues.scoreP1;
+  document.getElementById('scoreP2').innerText =
+    'Player 2 Score: ' + currentGameValues.scoreP2;
+  document.getElementById('cardP1').innerText =
+    'Player 1 Card: ' + currentGameValues.cardP1;
+  document.getElementById('cardP2').innerText =
+    'Player 2 Card: ' + currentGameValues.cardP2;
+  document.getElementById('roundWinner').innerText =
+    'Winner: ' + currentGameValues.roundWinner;
   drawCardsButton.disabled = false;
 }
