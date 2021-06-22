@@ -15,6 +15,7 @@ const values = [
   'K',
 ];
 
+// use this to reset values when there's a new game
 const initialValues = {
   roundCounter: 0,
   scoreP1: 0,
@@ -24,15 +25,16 @@ const initialValues = {
   roundWinner: '',
 };
 
-// deep copy of the initialValues object. These values will change thruout game
+// deep copy of the initialValues object. These values will change thruout game without impacting the initialValues object
 let currentGameValues = JSON.parse(JSON.stringify(initialValues));
 
+// get the initial deck and shuffle when game first loads
 let deck = getDeck();
 deck = shuffle(deck);
 
-let newGameButton = document.getElementById('newGameButton');
-let drawCardsButton = document.getElementById('drawCardsButton');
-
+// buttons
+let newGameButton = document.querySelector('#newGameButton');
+let drawCardsButton = document.querySelector('#drawCardsButton');
 drawCardsButton.addEventListener('click', drawCards);
 newGameButton.addEventListener('click', newGame);
 
@@ -68,11 +70,15 @@ function drawCards() {
   // draw 2 card objects
   currentGameValues.cardP1 = deck.shift();
   currentGameValues.cardP2 = deck.shift();
+
   determineWinner(currentGameValues.cardP1, currentGameValues.cardP2);
+  // update value of cards from an object to a string
   currentGameValues.cardP1 = `${currentGameValues.cardP1.value} of ${currentGameValues.cardP1.suit}`;
   currentGameValues.cardP2 = `${currentGameValues.cardP2.value} of ${currentGameValues.cardP2.suit}`;
+
   increaseRound();
   updateValues();
+  // when all cards have been used, announce winner
   if (currentGameValues.roundCounter === 26) {
     drawCardsButton.disabled = true;
     setTimeout(() => {
@@ -105,10 +111,10 @@ function determineWinner(cardP1, cardP2) {
   return currentGameValues.roundWinner;
 }
 
-function announceGameWinner(currentGameValues) {
-  if (currentGameValues.scoreP1 > currentGameValues.scoreP2) {
+function announceGameWinner(scoreP1, scoreP2) {
+  if (scoreP1 > scoreP2) {
     window.alert('Congrats, Player 1. You Win!');
-  } else if (currentGameValues.scoreP1 < currentGameValues.scoreP2) {
+  } else if (scoreP1 < scoreP2) {
     window.alert('Congrats, Player 2. You Win!');
   } else {
     window.alert('Tie Game! Play again to determine a winner.');
@@ -143,17 +149,17 @@ function newGame() {
 }
 
 function updateValues() {
-  document.getElementById('roundCounter').innerText =
+  document.querySelector('#roundCounter').innerText =
     'Round: ' + currentGameValues.roundCounter;
-  document.getElementById('scoreP1').innerText =
+  document.querySelector('#scoreP1').innerText =
     'Player 1 Score: ' + currentGameValues.scoreP1;
-  document.getElementById('scoreP2').innerText =
+  document.querySelector('#scoreP2').innerText =
     'Player 2 Score: ' + currentGameValues.scoreP2;
-  document.getElementById('cardP1').innerText =
+  document.querySelector('#cardP1').innerText =
     'Player 1 Card: ' + currentGameValues.cardP1;
-  document.getElementById('cardP2').innerText =
+  document.querySelector('#cardP2').innerText =
     'Player 2 Card: ' + currentGameValues.cardP2;
-  document.getElementById('roundWinner').innerText =
+  document.querySelector('#roundWinner').innerText =
     'Winner: ' + currentGameValues.roundWinner;
   drawCardsButton.disabled = false;
 }
