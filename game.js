@@ -20,9 +20,9 @@ const initialValues = {
   roundCounter: 0,
   scoreP1: 0,
   scoreP2: 0,
-  cardP1: '',
-  cardP2: '',
-  roundWinner: '',
+  cardP1: '...',
+  cardP2: '...',
+  roundWinner: '...',
 };
 
 // deep copy of the initialValues object. These values will change thruout game without impacting the initialValues object
@@ -150,16 +150,12 @@ function newGame() {
 
 function updateValues() {
   document.querySelector('#roundCounter').innerText =
-    'Round: ' + currentGameValues.roundCounter;
-  document.querySelector('#scoreP1').innerText =
-    'Player 1 Score: ' + currentGameValues.scoreP1;
-  document.querySelector('#scoreP2').innerText =
-    'Player 2 Score: ' + currentGameValues.scoreP2;
-  document.querySelector('#cardP1').innerText =
-    'Player 1 Card: ' + currentGameValues.cardP1;
-  document.querySelector('#cardP2').innerText =
-    'Player 2 Card: ' + currentGameValues.cardP2;
+    currentGameValues.roundCounter;
+  document.querySelector('#scoreP1').innerText = currentGameValues.scoreP1;
+  document.querySelector('#scoreP2').innerText = currentGameValues.scoreP2;
+  document.querySelector('#cardP1').innerText = currentGameValues.cardP1;
+  document.querySelector('#cardP2').innerText = currentGameValues.cardP2;
   document.querySelector('#roundWinner').innerText =
-    'Winner: ' + currentGameValues.roundWinner;
+    currentGameValues.roundWinner;
   drawCardsButton.disabled = false;
 }
