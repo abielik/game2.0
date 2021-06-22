@@ -150,7 +150,7 @@ function newGame() {
 
 function updateValues() {
   document.querySelector('#roundCounter').innerText =
-    currentGameValues.roundCounter;
+    currentGameValues.roundCounter + ' of 26';
   document.querySelector('#scoreP1').innerText = currentGameValues.scoreP1;
   document.querySelector('#scoreP2').innerText = currentGameValues.scoreP2;
   document.querySelector('#cardP1').innerText = currentGameValues.cardP1;
