@@ -1,9 +1,20 @@
-body {
-  background-color: lightblue;
+* {
+  box-sizing: border-box;
 }
 
-h1 {
+body {
+  background-color: lightblue;
+  margin: 0;
+}
+
+header,
+footer {
   text-align: center;
+  background-color: rgb(172, 187, 186);
+
+  color: #be0101;
+  font-size: 25px;
+  font-family: Impact;
 }
 
 .main {
@@ -12,4 +23,28 @@ h1 {
   justify-content: space-around;
   height: 300px;
   width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main > .scoring {
+  flex: 1;
+  background-color: chocolate;
+}
+
+.main > .round,
+.main > .cards {
+  flex: auto;
+  background-color: blueviolet;
+}
+
+/* .main > .round {
+  order: -1;
+} */
+
+header,
+footer,
+.round,
+.cards,
+.scoring {
+  padding: 20px;
 }

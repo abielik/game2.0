@@ -8,17 +8,21 @@
     <title>Game 2.0</title>
   </head>
   <body>
-    <h1>Game Time!</h1>
+    <header>Game Time!</header>
 
     <div class="main">
-      <div>
+      <div class="round">
         <h3>
           Round:
           <h3 id="roundCounter">0 of 26</h3>
         </h3>
+        <h3>
+          Winner:
+          <h3 id="roundWinner">...</h3>
+        </h3>
       </div>
 
-      <div>
+      <div class="scoring">
         <h3>
           Player 1 Score:
           <h3 id="scoreP1">0</h3>
@@ -29,7 +33,7 @@
         </h3>
       </div>
 
-      <div>
+      <div class="cards">
         <h3>
           Player 1 Card:
           <h3 id="cardP1">...</h3>
@@ -38,17 +42,12 @@
           Player 2 Card:
           <h3 id="cardP2">...</h3>
         </h3>
-        <h3>
-          Winner:
-          <h3 id="roundWinner">...</h3>
-        </h3>
-      </div>
-
-      <div>
-        <button id="newGameButton">New Game</button>
-        <button id="drawCardsButton">Draw Cards</button>
       </div>
     </div>
+    <footer>
+      <button id="newGameButton">New Game</button>
+      <button id="drawCardsButton">Draw Cards</button>
+    </footer>
 
     <script src="game.js"></script>
   </body>

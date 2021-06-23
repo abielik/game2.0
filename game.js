@@ -100,10 +100,10 @@ function determineWinner(cardP1, cardP2) {
   }
 
   if (playerOneCardValue > playerTwoCardValue) {
-    currentGameValues.roundWinner = 'Player 1 wins this round';
+    currentGameValues.roundWinner = 'Player 1';
     currentGameValues.scoreP1++;
   } else if (playerOneCardValue < playerTwoCardValue) {
-    currentGameValues.roundWinner = 'Player 2 wins this round';
+    currentGameValues.roundWinner = 'Player 2';
     currentGameValues.scoreP2++;
   } else {
     currentGameValues.roundWinner = 'Tie';
