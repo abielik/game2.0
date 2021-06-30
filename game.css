@@ -54,7 +54,7 @@ header button {
   height: 40vh;
   width: 100%;
   margin: 30px;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 #p1-card,
@@ -70,5 +70,12 @@ header button {
 }
 
 #draw-cards-button {
-  height: 40px;
+  height: 100px;
+  width: 200px;
+  align-self: center;
+  background-color: cornflowerblue;
+  color: lawngreen;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
 }
