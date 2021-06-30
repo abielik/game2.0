@@ -33,8 +33,8 @@ let deck = getDeck();
 deck = shuffle(deck);
 
 // buttons
-let newGameButton = document.querySelector('#newGameButton');
-let drawCardsButton = document.querySelector('#drawCardsButton');
+let newGameButton = document.querySelector('#new-game-button');
+let drawCardsButton = document.querySelector('#draw-cards-button');
 drawCardsButton.addEventListener('click', drawCards);
 newGameButton.addEventListener('click', newGame);
 
@@ -149,13 +149,13 @@ function newGame() {
 }
 
 function updateValues() {
-  document.querySelector('#roundCounter').innerText =
+  document.querySelector('.round').innerText =
     currentGameValues.roundCounter + ' of 26';
-  document.querySelector('#scoreP1').innerText = currentGameValues.scoreP1;
-  document.querySelector('#scoreP2').innerText = currentGameValues.scoreP2;
-  document.querySelector('#cardP1').innerText = currentGameValues.cardP1;
-  document.querySelector('#cardP2').innerText = currentGameValues.cardP2;
-  document.querySelector('#roundWinner').innerText =
+  document.querySelector('#p1-score').innerText = currentGameValues.scoreP1;
+  document.querySelector('#p2-score').innerText = currentGameValues.scoreP2;
+  document.querySelector('#p1-card').innerText = currentGameValues.cardP1;
+  document.querySelector('#p2-card').innerText = currentGameValues.cardP2;
+  document.querySelector('.round-winner').innerText =
     currentGameValues.roundWinner;
   drawCardsButton.disabled = false;
 }

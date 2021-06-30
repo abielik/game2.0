@@ -7,44 +7,35 @@ body {
   margin: 0;
 }
 
-header,
-footer {
-  text-align: center;
-  background-color: rgb(172, 187, 186);
+header {
+  display: flex;
+  align-items: center;
+  background-color: chocolate;
+  height: 20vh;
+  color: white;
+  justify-content: space-between;
+}
 
-  color: #be0101;
-  font-size: 25px;
-  font-family: Impact;
+header div,
+header button {
+  margin: auto;
+  font-size: 50px;
+}
+
+.scoring {
+  display: flex;
+  flex-direction: column;
+}
+
+.scoring p {
+  margin: 0 20px;
+}
+
+#new-game-button {
+  background-color: forestgreen;
+  border-radius: 15px;
 }
 
 .main {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 300px;
-  width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.main > .scoring {
-  flex: 1;
-  background-color: chocolate;
-}
-
-.main > .round,
-.main > .cards {
-  flex: auto;
-  background-color: blueviolet;
-}
-
-/* .main > .round {
-  order: -1;
-} */
-
-header,
-footer,
-.round,
-.cards,
-.scoring {
-  padding: 20px;
 }
