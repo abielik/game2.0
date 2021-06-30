@@ -3,7 +3,6 @@
 }
 
 body {
-  background-color: lightblue;
   margin: 0;
 }
 
@@ -39,6 +38,23 @@ header button {
   border-radius: 15px;
 }
 
-.main {
+#main {
+  background-color: rgb(42, 91, 107);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.cards-and-round-winner {
+  display: flex;
+  height: 50vh;
+  width: 80%;
+  margin: 30px;
+  background-color: rgb(229, 255, 0);
+}
+
+#draw-cards-button {
+  height: 40px;
 }
