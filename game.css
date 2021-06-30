@@ -4,6 +4,8 @@
 
 body {
   margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 header {
@@ -29,7 +31,7 @@ header button {
 .scoring p {
   margin: 5px 7px;
   background-color: blue;
-  width: 260px;
+  width: 300px;
   text-align: center;
 }
 
@@ -78,4 +80,5 @@ header button {
   font-size: 30px;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
 }
