@@ -155,7 +155,5 @@ function updateValues() {
   document.querySelector('#p2-score').innerText = currentGameValues.scoreP2;
   document.querySelector('#p1-card').innerText = currentGameValues.cardP1;
   document.querySelector('#p2-card').innerText = currentGameValues.cardP2;
-  document.querySelector('.round-winner').innerText =
-    currentGameValues.roundWinner;
   drawCardsButton.disabled = false;
 }
