@@ -76,9 +76,10 @@ header button {
   width: 200px;
   align-self: center;
   background-color: cornflowerblue;
-  color: lawngreen;
+  color: white;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
+  box-shadow: 10px 5px 5px black;
 }
