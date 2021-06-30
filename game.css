@@ -9,7 +9,7 @@ body {
 header {
   display: flex;
   align-items: center;
-  background-color: chocolate;
+  background-color: rgb(231, 119, 39, 0.7);
   height: 20vh;
   color: white;
   justify-content: space-between;
@@ -39,7 +39,9 @@ header button {
 }
 
 #main {
-  background-color: rgb(42, 91, 107);
+  background-image: url(./table-felt.jpeg);
+  background-size: contain;
+  background-repeat: round;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,12 +49,24 @@ header button {
   height: 80vh;
 }
 
-.cards-and-round-winner {
+.player-cards {
   display: flex;
-  height: 50vh;
-  width: 80%;
+  height: 40vh;
+  width: 100%;
   margin: 30px;
+  justify-content: space-around;
+}
+
+#p1-card,
+#p2-card {
+  background-color: crimson;
+  text-align: center;
+  width: 240px;
+}
+
+.round-winner {
   background-color: rgb(229, 255, 0);
+  margin: 0 30px;
 }
 
 #draw-cards-button {
