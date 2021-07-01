@@ -38,6 +38,7 @@ header button {
 #new-game-button {
   background-color: forestgreen;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 #main {
@@ -90,4 +91,9 @@ header button {
   font-weight: bold;
   text-transform: uppercase;
   box-shadow: 10px 5px 5px black;
+  cursor: pointer;
+}
+
+#draw-cards-button:hover {
+  background-color: #6495ed;
 }

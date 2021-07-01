@@ -174,8 +174,9 @@ function animateWinningCard(card) {
   card.animate(
     { transform: 'scale(1.5, 1.5)' },
     {
-      duration: 1500,
+      duration: 1000,
       delay: 500,
+      easing: 'ease-in-out',
     }
   );
 }
