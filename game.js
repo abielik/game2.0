@@ -93,10 +93,12 @@ function determineWinner(cardP1, cardP2) {
 
   if (playerOneCardValue > playerTwoCardValue) {
     currentGameValues.scoreP1++;
+    animateWinningCard(cardImageP1);
   } else if (playerOneCardValue < playerTwoCardValue) {
     currentGameValues.scoreP2++;
+    animateWinningCard(cardImageP2);
   } else {
-    window.alert('Tie!');
+    setTimeout(() => window.alert('Tie!'), 1000);
   }
 }
 
@@ -166,4 +168,14 @@ function updateValues() {
     '#p2-card'
   ).src = `./cards/${currentGameValues.cardP2.code}.svg`;
   drawCardsButton.disabled = false;
+}
+
+function animateWinningCard(card) {
+  card.animate(
+    { transform: 'scale(1.5, 1.5)' },
+    {
+      duration: 1500,
+      delay: 500,
+    }
+  );
 }
