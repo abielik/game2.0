@@ -30,7 +30,7 @@ header button {
 
 .scoring p {
   margin: 5px 7px;
-  background-color: blue;
+  color: blue;
   width: 300px;
   text-align: center;
 }
@@ -66,8 +66,6 @@ header button {
   text-align: center;
   width: 240px;
   padding: 5px;
-  /* background-image: url('./table-felt.jpeg');
-  background-size: cover; */
 }
 
 .draw-cards-area {

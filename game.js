@@ -147,6 +147,10 @@ function newGame() {
   currentGameValues = Object.assign({}, initialValues);
   updateValues();
   // call the removeAttribue AFTER updateValues(), otherwise blank image shows up on newGame click
+  removeImageAttribute();
+}
+
+function removeImageAttribute() {
   cardImageP1.removeAttribute('src');
   cardImageP2.removeAttribute('src');
 }
