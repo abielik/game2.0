@@ -82,7 +82,7 @@ function drawCards() {
     drawCardsButton.disabled = true;
     setTimeout(() => {
       announceGameWinner(currentGameValues.scoreP1, currentGameValues.scoreP2);
-    }, 1000);
+    }, 1500);
   }
 }
 
@@ -175,7 +175,7 @@ function animateWinningCard(card) {
     { transform: 'scale(1.5, 1.5)' },
     {
       duration: 1000,
-      delay: 500,
+      delay: 300,
       easing: 'ease-in-out',
     }
   );
