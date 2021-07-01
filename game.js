@@ -22,8 +22,8 @@ const initialValues = {
   roundCounter: 0,
   scoreP1: 0,
   scoreP2: 0,
-  cardP1: 'empty',
-  cardP2: 'empty',
+  cardP1: '#',
+  cardP2: '#',
 };
 
 // deep copy of the initialValues object. These values will change thruout game without impacting the initialValues object

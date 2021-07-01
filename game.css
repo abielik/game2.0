@@ -61,9 +61,11 @@ header button {
 
 #p1-card,
 #p2-card {
-  background-color: crimson;
+  border: 10px solid rgb(220, 167, 20);
+  border-radius: 20px;
   text-align: center;
   width: 240px;
+  padding: 5px;
 }
 
 .round-winner {
@@ -71,12 +73,24 @@ header button {
   margin: 0 30px;
 }
 
-#draw-cards-button {
-  height: 100px;
-  width: 200px;
+.draw-cards-area {
+  background-image: url(./cards/BLUE_BACK.svg);
+  background-repeat: no-repeat;
+  width: 223px;
+  height: 312px;
   align-self: center;
-  background-color: cornflowerblue;
-  color: white;
+}
+
+#draw-cards-button {
+  height: 80px;
+  width: 142px;
+  position: relative;
+  left: 40px;
+  top: 110px;
+  /* align-self: center; */
+  background-color: #6495edde;
+  color: black;
+  border-radius: 50px;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
