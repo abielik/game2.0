@@ -43,7 +43,7 @@ newGameButton.addEventListener('click', newGame);
 
 function getDeck() {
   const deck = new Array();
-  // deck will be an array of {value: '5', suit: 'S'}
+  // deck will be an array of {value: '4', suit: 'H', code: '4H'}
   for (let suit of suits) {
     for (let value of values) {
       const card = {
@@ -76,10 +76,6 @@ function drawCards() {
   currentGameValues.cardP2 = deck.shift();
 
   determineWinner(currentGameValues.cardP1, currentGameValues.cardP2);
-  // update value of cards from an object to a string
-  currentGameValues.cardP1 = currentGameValues.cardP1.code;
-  currentGameValues.cardP2 = currentGameValues.cardP2.code;
-
   increaseRound();
   updateValues();
   // when all cards have been used, announce winner
@@ -164,9 +160,9 @@ function updateValues() {
     'Player 2: ' + currentGameValues.scoreP2;
   document.querySelector(
     '#p1-card'
-  ).src = `./cards/${currentGameValues.cardP1}.svg`;
+  ).src = `./cards/${currentGameValues.cardP1.code}.svg`;
   document.querySelector(
     '#p2-card'
-  ).src = `./cards/${currentGameValues.cardP2}.svg`;
+  ).src = `./cards/${currentGameValues.cardP2.code}.svg`;
   drawCardsButton.disabled = false;
 }
