@@ -15,6 +15,8 @@ const values = [
   'K',
 ];
 
+//newGame();
+
 // use this to reset values when there's a new game
 const initialValues = {
   roundCounter: 0,
@@ -33,8 +35,8 @@ let deck = getDeck();
 deck = shuffle(deck);
 
 // buttons
-let newGameButton = document.querySelector('#new-game-button');
-let drawCardsButton = document.querySelector('#draw-cards-button');
+const newGameButton = document.querySelector('#new-game-button');
+const drawCardsButton = document.querySelector('#draw-cards-button');
 drawCardsButton.addEventListener('click', drawCards);
 newGameButton.addEventListener('click', newGame);
 
@@ -100,15 +102,12 @@ function determineWinner(cardP1, cardP2) {
   }
 
   if (playerOneCardValue > playerTwoCardValue) {
-    currentGameValues.roundWinner = 'Player 1';
     currentGameValues.scoreP1++;
   } else if (playerOneCardValue < playerTwoCardValue) {
-    currentGameValues.roundWinner = 'Player 2';
     currentGameValues.scoreP2++;
   } else {
-    currentGameValues.roundWinner = 'Tie';
+    window.alert('Tie!');
   }
-  return currentGameValues.roundWinner;
 }
 
 function announceGameWinner(scoreP1, scoreP2) {
@@ -150,9 +149,11 @@ function newGame() {
 
 function updateValues() {
   document.querySelector('.round').innerText =
-    currentGameValues.roundCounter + ' of 26';
-  document.querySelector('#p1-score').innerText = currentGameValues.scoreP1;
-  document.querySelector('#p2-score').innerText = currentGameValues.scoreP2;
+    'Round ' + currentGameValues.roundCounter + ' of 26';
+  document.querySelector('#p1-score').innerText =
+    'Player 1: ' + currentGameValues.scoreP1;
+  document.querySelector('#p2-score').innerText =
+    'Player 2: ' + currentGameValues.scoreP2;
   document.querySelector('#p1-card').innerText = currentGameValues.cardP1;
   document.querySelector('#p2-card').innerText = currentGameValues.cardP2;
   drawCardsButton.disabled = false;
