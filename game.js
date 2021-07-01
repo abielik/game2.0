@@ -22,8 +22,8 @@ const initialValues = {
   roundCounter: 0,
   scoreP1: 0,
   scoreP2: 0,
-  cardP1: '#',
-  cardP2: '#',
+  cardP1: '',
+  cardP2: '',
 };
 
 // deep copy of the initialValues object. These values will change thruout game without impacting the initialValues object
@@ -36,6 +36,8 @@ deck = shuffle(deck);
 // buttons
 const newGameButton = document.querySelector('#new-game-button');
 const drawCardsButton = document.querySelector('#draw-cards-button');
+const cardImageP1 = document.querySelector('#p1-card');
+const cardImageP2 = document.querySelector('#p2-card');
 drawCardsButton.addEventListener('click', drawCards);
 newGameButton.addEventListener('click', newGame);
 
@@ -143,8 +145,10 @@ function newGame() {
   deck = shuffle(getDeck());
   window.alert('Shuffling Deck...');
   currentGameValues = Object.assign({}, initialValues);
-
   updateValues();
+  // call the removeAttribue AFTER updateValues(), otherwise blank image shows up on newGame click
+  cardImageP1.removeAttribute('src');
+  cardImageP2.removeAttribute('src');
 }
 
 function updateValues() {

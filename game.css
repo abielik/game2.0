@@ -41,7 +41,7 @@ header button {
 }
 
 #main {
-  background-image: url(./table-felt.jpeg);
+  background-image: url('./table-felt.jpeg');
   background-size: contain;
   background-repeat: round;
   display: flex;
@@ -66,10 +66,12 @@ header button {
   text-align: center;
   width: 240px;
   padding: 5px;
+  /* background-image: url('./table-felt.jpeg');
+  background-size: cover; */
 }
 
 .draw-cards-area {
-  background-image: url(./cards/BLUE_BACK.svg);
+  background-image: url('./cards/BLUE_BACK.svg');
   background-repeat: no-repeat;
   width: 223px;
   height: 312px;
