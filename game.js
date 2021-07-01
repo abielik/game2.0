@@ -33,17 +33,16 @@ let currentGameValues = JSON.parse(JSON.stringify(initialValues));
 let deck = getDeck();
 deck = shuffle(deck);
 
-// buttons
-const newGameButton = document.querySelector('#new-game-button');
-const drawCardsButton = document.querySelector('#draw-cards-button');
 const cardImageP1 = document.querySelector('#p1-card');
 const cardImageP2 = document.querySelector('#p2-card');
+const newGameButton = document.querySelector('#new-game-button');
+const drawCardsButton = document.querySelector('#draw-cards-button');
 drawCardsButton.addEventListener('click', drawCards);
 newGameButton.addEventListener('click', newGame);
 
 function getDeck() {
   const deck = new Array();
-  // deck will be an array of {value: '4', suit: 'H', code: '4H'}
+  // deck will be an array of objects {value: '4', suit: 'H', code: '4H'}
   for (let suit of suits) {
     for (let value of values) {
       const card = {
@@ -89,15 +88,8 @@ function drawCards() {
 
 function determineWinner(cardP1, cardP2) {
   // convert value into an integer
-  let playerOneCardValue = Number(cardP1.value);
-  let playerTwoCardValue = Number(cardP2.value);
-  // for Aces and face cards, this function avoids a NaN
-  if (!playerOneCardValue) {
-    playerOneCardValue = convertFaceCards(cardP1);
-  }
-  if (!playerTwoCardValue) {
-    playerTwoCardValue = convertFaceCards(cardP2);
-  }
+  let playerOneCardValue = convertCardValueToNumber(cardP1);
+  let playerTwoCardValue = convertCardValueToNumber(cardP2);
 
   if (playerOneCardValue > playerTwoCardValue) {
     currentGameValues.scoreP1++;
@@ -108,18 +100,13 @@ function determineWinner(cardP1, cardP2) {
   }
 }
 
-function announceGameWinner(scoreP1, scoreP2) {
-  if (scoreP1 > scoreP2) {
-    window.alert('Congrats, Player 1. You Win!');
-  } else if (scoreP1 < scoreP2) {
-    window.alert('Congrats, Player 2. You Win!');
-  } else {
-    window.alert('Tie Game! Play again to determine a winner.');
+function convertCardValueToNumber(card) {
+  const numberValue = Number(card.value);
+  // for face cards and aces, NaN is numberValue
+  if (!numberValue) {
+    return convertFaceCards(card);
   }
-}
-
-function increaseRound() {
-  currentGameValues.roundCounter++;
+  return numberValue;
 }
 
 function convertFaceCards(card) {
@@ -135,6 +122,20 @@ function convertFaceCards(card) {
     default:
       return;
   }
+}
+
+function announceGameWinner(scoreP1, scoreP2) {
+  if (scoreP1 > scoreP2) {
+    window.alert('Congrats, Player 1. You Win!');
+  } else if (scoreP1 < scoreP2) {
+    window.alert('Congrats, Player 2. You Win!');
+  } else {
+    window.alert('Tie Game! Play again to determine a winner.');
+  }
+}
+
+function increaseRound() {
+  currentGameValues.roundCounter++;
 }
 
 function newGame() {
