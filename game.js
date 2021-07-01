@@ -1,4 +1,4 @@
-const suits = ['spades', 'hearts', 'clubs', 'diamonds'];
+const suits = ['S', 'H', 'C', 'D'];
 const values = [
   'A',
   '2',
@@ -22,9 +22,8 @@ const initialValues = {
   roundCounter: 0,
   scoreP1: 0,
   scoreP2: 0,
-  cardP1: '...',
-  cardP2: '...',
-  roundWinner: '...',
+  cardP1: 'empty',
+  cardP2: 'empty',
 };
 
 // deep copy of the initialValues object. These values will change thruout game without impacting the initialValues object
@@ -42,12 +41,13 @@ newGameButton.addEventListener('click', newGame);
 
 function getDeck() {
   const deck = new Array();
-  // deck will be an array of {value: '5', suit: 'spades'}
+  // deck will be an array of {value: '5', suit: 'S'}
   for (let suit of suits) {
     for (let value of values) {
       const card = {
         value,
         suit,
+        code: value + suit,
       };
       deck.push(card);
     }
@@ -75,8 +75,8 @@ function drawCards() {
 
   determineWinner(currentGameValues.cardP1, currentGameValues.cardP2);
   // update value of cards from an object to a string
-  currentGameValues.cardP1 = `${currentGameValues.cardP1.value} of ${currentGameValues.cardP1.suit}`;
-  currentGameValues.cardP2 = `${currentGameValues.cardP2.value} of ${currentGameValues.cardP2.suit}`;
+  currentGameValues.cardP1 = currentGameValues.cardP1.code;
+  currentGameValues.cardP2 = currentGameValues.cardP2.code;
 
   increaseRound();
   updateValues();
@@ -154,7 +154,11 @@ function updateValues() {
     'Player 1: ' + currentGameValues.scoreP1;
   document.querySelector('#p2-score').innerText =
     'Player 2: ' + currentGameValues.scoreP2;
-  document.querySelector('#p1-card').innerText = currentGameValues.cardP1;
-  document.querySelector('#p2-card').innerText = currentGameValues.cardP2;
+  document.querySelector(
+    '#p1-card'
+  ).src = `./cards/${currentGameValues.cardP1}.svg`;
+  document.querySelector(
+    '#p2-card'
+  ).src = `./cards/${currentGameValues.cardP2}.svg`;
   drawCardsButton.disabled = false;
 }
